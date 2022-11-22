@@ -9,11 +9,17 @@ services:
       - redis
     networks:
       - backend
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6380
     stdin_open: true
     tty: true
 
   redis:
     image: redis:6.2-alpine
+    command: --port 6380
+    ports:
+      - 6380:6380
     volumes:
       - cache:/data
     networks:

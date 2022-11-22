@@ -8,7 +8,7 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-const client = require("./src/redisClient");
+const client = require("./src/services/redisClient");
 const router = require("./src/router");
 
 async function main() {

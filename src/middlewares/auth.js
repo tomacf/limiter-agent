@@ -1,7 +1,10 @@
 const jwt = require("jsonwebtoken");
+const crypto = require("crypto");
 
-function generateAccessToken(username) {
-  return jwt.sign(username, process.env.TOKEN_SECRET, { expiresIn: "1800s" });
+function generateAccessToken() {
+  const id = crypto.randomBytes(16).toString("hex");
+  console.log("Random generated user id :", id);
+  return jwt.sign(id, process.env.TOKEN_SECRET, {});
 }
 
 function authenticateToken(req, res, next) {
