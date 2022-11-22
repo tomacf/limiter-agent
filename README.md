@@ -1,4 +1,4 @@
-#Installation
+# Usage
 
 Basic implementation of authentification and limitation middlewares in nodejs using redis and docker
 
@@ -9,19 +9,28 @@ Basic implementation of authentification and limitation middlewares in nodejs us
 The .env file shouldnt be commit but is proposed to make the testing simple.
 The middlewares behavior has been tested using the tool "siege" designed for stress test.
 
-Available endpoints :
 
-/public/light
-/public/heavy
+#### Available endpoints :
 
-Endpoints added to provide token for testing usage.
 
-/public/tokenprovider
+*/public/light*
 
-Bearer Token expected for the folling endpoints:
+*/public/heavy*
 
-/private/birds
-/private/dogs
-/private/cows
-/private/bigmouses
-/private/elephants
+
+##### Endpoints added to provide token for testing usage.
+
+*/public/tokenprovider*
+
+
+##### Bearer Token expected for the folling endpoints:
+
+*/private/birds*
+
+*/private/dogs*
+
+*/private/cows*
+
+*/private/bigmouses*
+
+*/private/elephants*
