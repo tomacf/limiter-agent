@@ -1,0 +1,25 @@
+version: "3"
+services:
+  node:
+    restart: unless-stopped
+    build: .
+    ports:
+      - 3000:3000
+    depends_on:
+      - redis
+    networks:
+      - backend
+    stdin_open: true
+    tty: true
+
+  redis:
+    image: redis:6.2-alpine
+    volumes:
+      - cache:/data
+    networks:
+      - backend
+
+volumes:
+  cache:
+networks:
+  backend:
