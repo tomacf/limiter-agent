@@ -4,11 +4,14 @@ const tokenLimitHour = process.env.TOKEN_LIMIT_HOUR;
 const ipLimitHour = process.env.IP_LIMIT_HOUR;
 
 async function isOverLimit(id, currentLimit, weight) {
-  let count;
-  let remainingTime;
-  count = await client.incrBy(id, weight);
+  // The two redis call are fired directly and not sequentialy
+  const countPromise = client.incrBy(id, weight);
+  const remainingTimePromise = client.ttl(id);
+
+  let count = await countPromise;
+  let remainingTime = await remainingTimePromise;
+
   if (count > currentLimit) {
-    remainingTime = await client.ttl(id);
     throw {
       message: `You reached the request limit of ${count}/${currentLimit} for the remaining ${remainingTime} seconds. You will be able to send requests again at ${new Date(
         Date.now() + remainingTime * 1000
