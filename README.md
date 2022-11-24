@@ -4,7 +4,29 @@ Basic implementation of authentification and limitation middlewares in nodejs us
 
 ## Docker && Docker-Compose
 
+#### requirements
+
+docker & docker-compose installed
+
+#### commands
+
 `docker-compose up --build`
+
+## Local env
+
+
+#### requirements
+
+node installed
+redis installed and running in default port 6379
+
+#### commands
+
+`npm install`
+
+`npm start`
+
+## Description
 
 The .env file shouldnt be commit but is proposed to make the testing simple.
 The middlewares behavior has been tested using the tool "siege" designed for stress test.
