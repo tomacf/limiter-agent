@@ -26,7 +26,7 @@ async function isOverLimit(id, currentLimit, weight) {
 function limitPerIp(weight) {
   return async (req, res, next) => {
     try {
-      await isOverLimit("ip_" + req.ip, ipLimitHour, weight);
+      await isOverLimit(req.ip, ipLimitHour, weight);
       next();
     } catch (error) {
       res.status(429).send(error.message);
@@ -38,7 +38,7 @@ function limitPerIp(weight) {
 function limitPerToken(weight) {
   return async (req, res, next) => {
     try {
-      await isOverLimit(req.headers.authorization, tokenLimitHour, weight);
+      await isOverLimit(req.user, tokenLimitHour, weight);
       next();
     } catch (error) {
       res.status(429).send(error.message);
