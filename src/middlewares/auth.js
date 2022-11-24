@@ -3,7 +3,6 @@ const crypto = require("crypto");
 
 function generateAccessToken() {
   const id = crypto.randomBytes(16).toString("hex");
-  console.log("Random generated user id :", id);
   return jwt.sign(id, process.env.TOKEN_SECRET, {});
 }
 
