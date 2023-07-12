@@ -45,7 +45,7 @@ The middlewares behavior has been tested using the tool "siege" designed for str
 */public/tokenprovider*
 
 
-##### Bearer Token expected for the folling endpoints:
+##### Bearer Token expected for the following endpoints:
 
 */private/birds*
 
